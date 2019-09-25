@@ -1,0 +1,1029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_gasolineraModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_abastece">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="cst_codigo" />
+            <PropertyRef Name="prv_codigo" />
+            <PropertyRef Name="ab_fecha" />
+          </Key>
+          <Property Name="est_codigo" Type="int" Nullable="false" />
+          <Property Name="cst_codigo" Type="int" Nullable="false" />
+          <Property Name="prv_codigo" Type="int" Nullable="false" />
+          <Property Name="ab_fecha" Type="datetime" Nullable="false" />
+          <Property Name="ab_cantidadABS" Type="int" Nullable="false" />
+          <Property Name="ab_montoABS" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_asignado">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="est_codigo" />
+          </Key>
+          <Property Name="emp_codigo" Type="int" Nullable="false" />
+          <Property Name="est_codigo" Type="int" Nullable="false" />
+          <Property Name="asg_jornada" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="asg_fechaAsig" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_bitacora">
+          <Key>
+            <PropertyRef Name="bi_id" />
+          </Key>
+          <Property Name="bi_id" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombrePC" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="objeto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="accion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_bitacora_deta">
+          <Key>
+            <PropertyRef Name="bi_id" />
+            <PropertyRef Name="bi_num" />
+          </Key>
+          <Property Name="bi_id" Type="int" Nullable="false" />
+          <Property Name="bi_num" Type="int" Nullable="false" />
+          <Property Name="campo" Type="varchar" MaxLength="2000" />
+          <Property Name="valor" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tbl_bomba">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+          </Key>
+          <Property Name="bmb_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bmb_tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bmb_estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="est_codigo" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'db_gasolinera.dbo.tbl_bpr' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tbl_bpr">
+          <Key>
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" />
+          <Property Name="nombrePC" Type="varchar" MaxLength="100" />
+          <Property Name="accion" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="central" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_cisterna">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="cst_codigo" />
+          </Key>
+          <Property Name="cst_capacidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_diametro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_altura" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_UltimaFech" Type="datetime" Nullable="false" />
+          <Property Name="cst_CapActual" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_codigo" Type="int" Nullable="false" />
+          <Property Name="cst_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_empleado">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+          </Key>
+          <Property Name="emp_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="emp_seguro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_fecIngre" Type="datetime" Nullable="false" />
+          <Property Name="emp_fechEgre" Type="datetime" Nullable="false" />
+          <Property Name="emp_fechNac" Type="datetime" Nullable="false" />
+          <Property Name="emp_edad" Type="int" Nullable="false" />
+          <Property Name="emp_salida" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_puesto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_salarioN" Type="money" Nullable="false" />
+          <Property Name="emp_Tcontrato" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_genero" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_empmail">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="eem_email" />
+          </Key>
+          <Property Name="emp_codigo" Type="int" Nullable="false" />
+          <Property Name="eem_email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_emptel">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="emt_telefono" />
+          </Key>
+          <Property Name="emp_codigo" Type="int" Nullable="false" />
+          <Property Name="emt_telefono" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_estacion">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+          </Key>
+          <Property Name="est_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="est_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_Registro" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="est_InOperacion" Type="datetime" Nullable="false" />
+          <Property Name="est_direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_dpto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="lg_id" />
+          </Key>
+          <Property Name="lg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lg_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lg_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lg_contra" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_proveedor">
+          <Key>
+            <PropertyRef Name="prv_codigo" />
+          </Key>
+          <Property Name="prv_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prv_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prv_CentralA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_realiza">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+            <PropertyRef Name="vnt_FechVent" />
+          </Key>
+          <Property Name="bmb_codigo" Type="int" Nullable="false" />
+          <Property Name="vnt_FechVent" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_telEst">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="te_telefono" />
+          </Key>
+          <Property Name="est_codigo" Type="int" Nullable="false" />
+          <Property Name="te_telefono" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_venta">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+            <PropertyRef Name="vnt_FechVent" />
+          </Key>
+          <Property Name="bmb_codigo" Type="int" Nullable="false" />
+          <Property Name="vnt_hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="vnt_montoV" Type="money" Nullable="false" />
+          <Property Name="vnt_FechVent" Type="datetime" Nullable="false" />
+          <Property Name="vnt_TotVentaLit" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbl_abast__prv_c__367C1819">
+          <End Role="tbl_proveedor" Type="Self.tbl_proveedor" Multiplicity="1" />
+          <End Role="tbl_abastece" Type="Self.tbl_abastece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_proveedor">
+              <PropertyRef Name="prv_codigo" />
+            </Principal>
+            <Dependent Role="tbl_abastece">
+              <PropertyRef Name="prv_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_abastece__3587F3E0">
+          <End Role="tbl_cisterna" Type="Self.tbl_cisterna" Multiplicity="1" />
+          <End Role="tbl_abastece" Type="Self.tbl_abastece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cisterna">
+              <PropertyRef Name="est_codigo" />
+              <PropertyRef Name="cst_codigo" />
+            </Principal>
+            <Dependent Role="tbl_abastece">
+              <PropertyRef Name="est_codigo" />
+              <PropertyRef Name="cst_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_asign__emp_c__1EA48E88">
+          <End Role="tbl_empleado" Type="Self.tbl_empleado" Multiplicity="1" />
+          <End Role="tbl_asignado" Type="Self.tbl_asignado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_asignado">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_asign__est_c__1F98B2C1">
+          <End Role="tbl_estacion" Type="Self.tbl_estacion" Multiplicity="1" />
+          <End Role="tbl_asignado" Type="Self.tbl_asignado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_asignado">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_bitac__bi_id__6166761E">
+          <End Role="tbl_bitacora" Type="Self.tbl_bitacora" Multiplicity="1" />
+          <End Role="tbl_bitacora_deta" Type="Self.tbl_bitacora_deta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bitacora">
+              <PropertyRef Name="bi_id" />
+            </Principal>
+            <Dependent Role="tbl_bitacora_deta">
+              <PropertyRef Name="bi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_bomba__est_c__5AEE82B9">
+          <End Role="tbl_estacion" Type="Self.tbl_estacion" Multiplicity="0..1" />
+          <End Role="tbl_bomba" Type="Self.tbl_bomba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_bomba">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_ciste__est_c__5FB337D6">
+          <End Role="tbl_estacion" Type="Self.tbl_estacion" Multiplicity="1" />
+          <End Role="tbl_cisterna" Type="Self.tbl_cisterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_cisterna">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_empma__emp_c__19DFD96B">
+          <End Role="tbl_empleado" Type="Self.tbl_empleado" Multiplicity="1" />
+          <End Role="tbl_empmail" Type="Self.tbl_empmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_empmail">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_empte__emp_c__151B244E">
+          <End Role="tbl_empleado" Type="Self.tbl_empleado" Multiplicity="1" />
+          <End Role="tbl_emptel" Type="Self.tbl_emptel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_emptel">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_reali__bmb_c__0A9D95DB">
+          <End Role="tbl_bomba" Type="Self.tbl_bomba" Multiplicity="1" />
+          <End Role="tbl_realiza" Type="Self.tbl_realiza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bomba">
+              <PropertyRef Name="bmb_codigo" />
+            </Principal>
+            <Dependent Role="tbl_realiza">
+              <PropertyRef Name="bmb_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_realiza__0B91BA14">
+          <End Role="tbl_venta" Type="Self.tbl_venta" Multiplicity="1" />
+          <End Role="tbl_realiza" Type="Self.tbl_realiza" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_venta">
+              <PropertyRef Name="bmb_codigo" />
+              <PropertyRef Name="vnt_FechVent" />
+            </Principal>
+            <Dependent Role="tbl_realiza">
+              <PropertyRef Name="bmb_codigo" />
+              <PropertyRef Name="vnt_FechVent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_telEs__est_c__245D67DE">
+          <End Role="tbl_estacion" Type="Self.tbl_estacion" Multiplicity="1" />
+          <End Role="tbl_telEst" Type="Self.tbl_telEst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_telEst">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_venta__bmb_c__7D439ABD">
+          <End Role="tbl_bomba" Type="Self.tbl_bomba" Multiplicity="1" />
+          <End Role="tbl_venta" Type="Self.tbl_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bomba">
+              <PropertyRef Name="bmb_codigo" />
+            </Principal>
+            <Dependent Role="tbl_venta">
+              <PropertyRef Name="bmb_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_gasolineraModel1StoreContainer">
+          <EntitySet Name="tbl_abastece" EntityType="Self.tbl_abastece" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_asignado" EntityType="Self.tbl_asignado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_bitacora" EntityType="Self.tbl_bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_bitacora_deta" EntityType="Self.tbl_bitacora_deta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_bomba" EntityType="Self.tbl_bomba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cisterna" EntityType="Self.tbl_cisterna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_empleado" EntityType="Self.tbl_empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_empmail" EntityType="Self.tbl_empmail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_emptel" EntityType="Self.tbl_emptel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_estacion" EntityType="Self.tbl_estacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_login" EntityType="Self.tbl_login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_proveedor" EntityType="Self.tbl_proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_realiza" EntityType="Self.tbl_realiza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_telEst" EntityType="Self.tbl_telEst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_venta" EntityType="Self.tbl_venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_bpr" EntityType="Self.tbl_bpr" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_bpr].[Fecha] AS [Fecha], 
+    [tbl_bpr].[usuario] AS [usuario], 
+    [tbl_bpr].[nombrePC] AS [nombrePC], 
+    [tbl_bpr].[accion] AS [accion], 
+    [tbl_bpr].[nombre] AS [nombre], 
+    [tbl_bpr].[central] AS [central]
+    FROM [dbo].[tbl_bpr] AS [tbl_bpr]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tbl_abast__prv_c__367C1819" Association="Self.FK__tbl_abast__prv_c__367C1819">
+            <End Role="tbl_proveedor" EntitySet="tbl_proveedor" />
+            <End Role="tbl_abastece" EntitySet="tbl_abastece" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_abastece__3587F3E0" Association="Self.FK__tbl_abastece__3587F3E0">
+            <End Role="tbl_cisterna" EntitySet="tbl_cisterna" />
+            <End Role="tbl_abastece" EntitySet="tbl_abastece" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_asign__emp_c__1EA48E88" Association="Self.FK__tbl_asign__emp_c__1EA48E88">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_asignado" EntitySet="tbl_asignado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_asign__est_c__1F98B2C1" Association="Self.FK__tbl_asign__est_c__1F98B2C1">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_asignado" EntitySet="tbl_asignado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_bitac__bi_id__6166761E" Association="Self.FK__tbl_bitac__bi_id__6166761E">
+            <End Role="tbl_bitacora" EntitySet="tbl_bitacora" />
+            <End Role="tbl_bitacora_deta" EntitySet="tbl_bitacora_deta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_bomba__est_c__5AEE82B9" Association="Self.FK__tbl_bomba__est_c__5AEE82B9">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_ciste__est_c__5FB337D6" Association="Self.FK__tbl_ciste__est_c__5FB337D6">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_cisterna" EntitySet="tbl_cisterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_empma__emp_c__19DFD96B" Association="Self.FK__tbl_empma__emp_c__19DFD96B">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_empmail" EntitySet="tbl_empmail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_empte__emp_c__151B244E" Association="Self.FK__tbl_empte__emp_c__151B244E">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_emptel" EntitySet="tbl_emptel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_reali__bmb_c__0A9D95DB" Association="Self.FK__tbl_reali__bmb_c__0A9D95DB">
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+            <End Role="tbl_realiza" EntitySet="tbl_realiza" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_realiza__0B91BA14" Association="Self.FK__tbl_realiza__0B91BA14">
+            <End Role="tbl_venta" EntitySet="tbl_venta" />
+            <End Role="tbl_realiza" EntitySet="tbl_realiza" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_telEs__est_c__245D67DE" Association="Self.FK__tbl_telEs__est_c__245D67DE">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_telEst" EntitySet="tbl_telEst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_venta__bmb_c__7D439ABD" Association="Self.FK__tbl_venta__bmb_c__7D439ABD">
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+            <End Role="tbl_venta" EntitySet="tbl_venta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_gasolineraModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_proveedor">
+          <Key>
+            <PropertyRef Name="prv_codigo" />
+          </Key>
+          <Property Name="prv_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prv_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prv_CentralA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_abastece" Relationship="db_gasolineraModel1.FK__tbl_abast__prv_c__367C1819" FromRole="tbl_proveedor" ToRole="tbl_abastece" />
+        </EntityType>
+        <EntityContainer Name="db_gasolineraEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_proveedor" EntityType="Self.tbl_proveedor" />
+          <EntitySet Name="tbl_abastece" EntityType="db_gasolineraModel1.tbl_abastece" />
+          <EntitySet Name="tbl_asignado" EntityType="db_gasolineraModel1.tbl_asignado" />
+          <EntitySet Name="tbl_bitacora" EntityType="db_gasolineraModel1.tbl_bitacora" />
+          <EntitySet Name="tbl_bitacora_deta" EntityType="db_gasolineraModel1.tbl_bitacora_deta" />
+          <EntitySet Name="tbl_bomba" EntityType="db_gasolineraModel1.tbl_bomba" />
+          <EntitySet Name="tbl_cisterna" EntityType="db_gasolineraModel1.tbl_cisterna" />
+          <EntitySet Name="tbl_empleado" EntityType="db_gasolineraModel1.tbl_empleado" />
+          <EntitySet Name="tbl_empmail" EntityType="db_gasolineraModel1.tbl_empmail" />
+          <EntitySet Name="tbl_emptel" EntityType="db_gasolineraModel1.tbl_emptel" />
+          <EntitySet Name="tbl_estacion" EntityType="db_gasolineraModel1.tbl_estacion" />
+          <EntitySet Name="tbl_login" EntityType="db_gasolineraModel1.tbl_login" />
+          <EntitySet Name="tbl_realiza" EntityType="db_gasolineraModel1.tbl_realiza" />
+          <EntitySet Name="tbl_telEst" EntityType="db_gasolineraModel1.tbl_telEst" />
+          <EntitySet Name="tbl_venta" EntityType="db_gasolineraModel1.tbl_venta" />
+          <AssociationSet Name="FK__tbl_abast__prv_c__367C1819" Association="db_gasolineraModel1.FK__tbl_abast__prv_c__367C1819">
+            <End Role="tbl_proveedor" EntitySet="tbl_proveedor" />
+            <End Role="tbl_abastece" EntitySet="tbl_abastece" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_abastece__3587F3E0" Association="db_gasolineraModel1.FK__tbl_abastece__3587F3E0">
+            <End Role="tbl_cisterna" EntitySet="tbl_cisterna" />
+            <End Role="tbl_abastece" EntitySet="tbl_abastece" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_asign__emp_c__1EA48E88" Association="db_gasolineraModel1.FK__tbl_asign__emp_c__1EA48E88">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_asignado" EntitySet="tbl_asignado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_asign__est_c__1F98B2C1" Association="db_gasolineraModel1.FK__tbl_asign__est_c__1F98B2C1">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_asignado" EntitySet="tbl_asignado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_bitac__bi_id__6166761E" Association="db_gasolineraModel1.FK__tbl_bitac__bi_id__6166761E">
+            <End Role="tbl_bitacora" EntitySet="tbl_bitacora" />
+            <End Role="tbl_bitacora_deta" EntitySet="tbl_bitacora_deta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_bomba__est_c__5AEE82B9" Association="db_gasolineraModel1.FK__tbl_bomba__est_c__5AEE82B9">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_reali__bmb_c__0A9D95DB" Association="db_gasolineraModel1.FK__tbl_reali__bmb_c__0A9D95DB">
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+            <End Role="tbl_realiza" EntitySet="tbl_realiza" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_venta__bmb_c__7D439ABD" Association="db_gasolineraModel1.FK__tbl_venta__bmb_c__7D439ABD">
+            <End Role="tbl_bomba" EntitySet="tbl_bomba" />
+            <End Role="tbl_venta" EntitySet="tbl_venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_ciste__est_c__5FB337D6" Association="db_gasolineraModel1.FK__tbl_ciste__est_c__5FB337D6">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_cisterna" EntitySet="tbl_cisterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_empma__emp_c__19DFD96B" Association="db_gasolineraModel1.FK__tbl_empma__emp_c__19DFD96B">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_empmail" EntitySet="tbl_empmail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_empte__emp_c__151B244E" Association="db_gasolineraModel1.FK__tbl_empte__emp_c__151B244E">
+            <End Role="tbl_empleado" EntitySet="tbl_empleado" />
+            <End Role="tbl_emptel" EntitySet="tbl_emptel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_telEs__est_c__245D67DE" Association="db_gasolineraModel1.FK__tbl_telEs__est_c__245D67DE">
+            <End Role="tbl_estacion" EntitySet="tbl_estacion" />
+            <End Role="tbl_telEst" EntitySet="tbl_telEst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_realiza__0B91BA14" Association="db_gasolineraModel1.FK__tbl_realiza__0B91BA14">
+            <End Role="tbl_venta" EntitySet="tbl_venta" />
+            <End Role="tbl_realiza" EntitySet="tbl_realiza" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_abastece">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="cst_codigo" />
+            <PropertyRef Name="prv_codigo" />
+            <PropertyRef Name="ab_fecha" />
+          </Key>
+          <Property Name="est_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cst_codigo" Type="Int32" Nullable="false" />
+          <Property Name="prv_codigo" Type="Int32" Nullable="false" />
+          <Property Name="ab_fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ab_cantidadABS" Type="Int32" Nullable="false" />
+          <Property Name="ab_montoABS" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="tbl_proveedor" Relationship="db_gasolineraModel1.FK__tbl_abast__prv_c__367C1819" FromRole="tbl_abastece" ToRole="tbl_proveedor" />
+          <NavigationProperty Name="tbl_cisterna" Relationship="db_gasolineraModel1.FK__tbl_abastece__3587F3E0" FromRole="tbl_abastece" ToRole="tbl_cisterna" />
+        </EntityType>
+        <EntityType Name="tbl_asignado">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="est_codigo" />
+          </Key>
+          <Property Name="emp_codigo" Type="Int32" Nullable="false" />
+          <Property Name="est_codigo" Type="Int32" Nullable="false" />
+          <Property Name="asg_jornada" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="asg_fechaAsig" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_empleado" Relationship="db_gasolineraModel1.FK__tbl_asign__emp_c__1EA48E88" FromRole="tbl_asignado" ToRole="tbl_empleado" />
+          <NavigationProperty Name="tbl_estacion" Relationship="db_gasolineraModel1.FK__tbl_asign__est_c__1F98B2C1" FromRole="tbl_asignado" ToRole="tbl_estacion" />
+        </EntityType>
+        <EntityType Name="tbl_bitacora">
+          <Key>
+            <PropertyRef Name="bi_id" />
+          </Key>
+          <Property Name="bi_id" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombrePC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="objeto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="accion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_bitacora_deta" Relationship="db_gasolineraModel1.FK__tbl_bitac__bi_id__6166761E" FromRole="tbl_bitacora" ToRole="tbl_bitacora_deta" />
+        </EntityType>
+        <EntityType Name="tbl_bitacora_deta">
+          <Key>
+            <PropertyRef Name="bi_id" />
+            <PropertyRef Name="bi_num" />
+          </Key>
+          <Property Name="bi_id" Type="Int32" Nullable="false" />
+          <Property Name="bi_num" Type="Int32" Nullable="false" />
+          <Property Name="campo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_bitacora" Relationship="db_gasolineraModel1.FK__tbl_bitac__bi_id__6166761E" FromRole="tbl_bitacora_deta" ToRole="tbl_bitacora" />
+        </EntityType>
+        <EntityType Name="tbl_bomba">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+          </Key>
+          <Property Name="bmb_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bmb_tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bmb_estado" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="est_codigo" Type="Int32" />
+          <NavigationProperty Name="tbl_estacion" Relationship="db_gasolineraModel1.FK__tbl_bomba__est_c__5AEE82B9" FromRole="tbl_bomba" ToRole="tbl_estacion" />
+          <NavigationProperty Name="tbl_realiza" Relationship="db_gasolineraModel1.FK__tbl_reali__bmb_c__0A9D95DB" FromRole="tbl_bomba" ToRole="tbl_realiza" />
+          <NavigationProperty Name="tbl_venta" Relationship="db_gasolineraModel1.FK__tbl_venta__bmb_c__7D439ABD" FromRole="tbl_bomba" ToRole="tbl_venta" />
+        </EntityType>
+        <EntityType Name="tbl_cisterna">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="cst_codigo" />
+          </Key>
+          <Property Name="cst_capacidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cst_diametro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cst_altura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cst_tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cst_UltimaFech" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cst_CapActual" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="est_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cst_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_abastece" Relationship="db_gasolineraModel1.FK__tbl_abastece__3587F3E0" FromRole="tbl_cisterna" ToRole="tbl_abastece" />
+          <NavigationProperty Name="tbl_estacion" Relationship="db_gasolineraModel1.FK__tbl_ciste__est_c__5FB337D6" FromRole="tbl_cisterna" ToRole="tbl_estacion" />
+        </EntityType>
+        <EntityType Name="tbl_empleado">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+          </Key>
+          <Property Name="emp_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="emp_seguro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_fecIngre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="emp_fechEgre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="emp_fechNac" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="emp_edad" Type="Int32" Nullable="false" />
+          <Property Name="emp_salida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_puesto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_salarioN" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="emp_Tcontrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_genero" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tbl_asignado" Relationship="db_gasolineraModel1.FK__tbl_asign__emp_c__1EA48E88" FromRole="tbl_empleado" ToRole="tbl_asignado" />
+          <NavigationProperty Name="tbl_empmail" Relationship="db_gasolineraModel1.FK__tbl_empma__emp_c__19DFD96B" FromRole="tbl_empleado" ToRole="tbl_empmail" />
+          <NavigationProperty Name="tbl_emptel" Relationship="db_gasolineraModel1.FK__tbl_empte__emp_c__151B244E" FromRole="tbl_empleado" ToRole="tbl_emptel" />
+        </EntityType>
+        <EntityType Name="tbl_empmail">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="eem_email" />
+          </Key>
+          <Property Name="emp_codigo" Type="Int32" Nullable="false" />
+          <Property Name="eem_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_empleado" Relationship="db_gasolineraModel1.FK__tbl_empma__emp_c__19DFD96B" FromRole="tbl_empmail" ToRole="tbl_empleado" />
+        </EntityType>
+        <EntityType Name="tbl_emptel">
+          <Key>
+            <PropertyRef Name="emp_codigo" />
+            <PropertyRef Name="emt_telefono" />
+          </Key>
+          <Property Name="emp_codigo" Type="Int32" Nullable="false" />
+          <Property Name="emt_telefono" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_empleado" Relationship="db_gasolineraModel1.FK__tbl_empte__emp_c__151B244E" FromRole="tbl_emptel" ToRole="tbl_empleado" />
+        </EntityType>
+        <EntityType Name="tbl_estacion">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+          </Key>
+          <Property Name="est_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="est_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="est_Registro" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="est_InOperacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="est_direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="est_dpto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="est_ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_asignado" Relationship="db_gasolineraModel1.FK__tbl_asign__est_c__1F98B2C1" FromRole="tbl_estacion" ToRole="tbl_asignado" />
+          <NavigationProperty Name="tbl_bomba" Relationship="db_gasolineraModel1.FK__tbl_bomba__est_c__5AEE82B9" FromRole="tbl_estacion" ToRole="tbl_bomba" />
+          <NavigationProperty Name="tbl_cisterna" Relationship="db_gasolineraModel1.FK__tbl_ciste__est_c__5FB337D6" FromRole="tbl_estacion" ToRole="tbl_cisterna" />
+          <NavigationProperty Name="tbl_telEst" Relationship="db_gasolineraModel1.FK__tbl_telEs__est_c__245D67DE" FromRole="tbl_estacion" ToRole="tbl_telEst" />
+        </EntityType>
+        <EntityType Name="tbl_login">
+          <Key>
+            <PropertyRef Name="lg_id" />
+          </Key>
+          <Property Name="lg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lg_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lg_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lg_contra" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_realiza">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+            <PropertyRef Name="vnt_FechVent" />
+          </Key>
+          <Property Name="bmb_codigo" Type="Int32" Nullable="false" />
+          <Property Name="vnt_FechVent" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_bomba" Relationship="db_gasolineraModel1.FK__tbl_reali__bmb_c__0A9D95DB" FromRole="tbl_realiza" ToRole="tbl_bomba" />
+          <NavigationProperty Name="tbl_venta" Relationship="db_gasolineraModel1.FK__tbl_realiza__0B91BA14" FromRole="tbl_realiza" ToRole="tbl_venta" />
+        </EntityType>
+        <EntityType Name="tbl_telEst">
+          <Key>
+            <PropertyRef Name="est_codigo" />
+            <PropertyRef Name="te_telefono" />
+          </Key>
+          <Property Name="est_codigo" Type="Int32" Nullable="false" />
+          <Property Name="te_telefono" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_estacion" Relationship="db_gasolineraModel1.FK__tbl_telEs__est_c__245D67DE" FromRole="tbl_telEst" ToRole="tbl_estacion" />
+        </EntityType>
+        <EntityType Name="tbl_venta">
+          <Key>
+            <PropertyRef Name="bmb_codigo" />
+            <PropertyRef Name="vnt_FechVent" />
+          </Key>
+          <Property Name="bmb_codigo" Type="Int32" Nullable="false" />
+          <Property Name="vnt_hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="vnt_montoV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="vnt_FechVent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vnt_TotVentaLit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_bomba" Relationship="db_gasolineraModel1.FK__tbl_venta__bmb_c__7D439ABD" FromRole="tbl_venta" ToRole="tbl_bomba" />
+          <NavigationProperty Name="tbl_realiza" Relationship="db_gasolineraModel1.FK__tbl_realiza__0B91BA14" FromRole="tbl_venta" ToRole="tbl_realiza" />
+        </EntityType>
+        <Association Name="FK__tbl_abast__prv_c__367C1819">
+          <End Type="db_gasolineraModel1.tbl_proveedor" Role="tbl_proveedor" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_abastece" Role="tbl_abastece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_proveedor">
+              <PropertyRef Name="prv_codigo" />
+            </Principal>
+            <Dependent Role="tbl_abastece">
+              <PropertyRef Name="prv_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_abastece__3587F3E0">
+          <End Type="db_gasolineraModel1.tbl_cisterna" Role="tbl_cisterna" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_abastece" Role="tbl_abastece" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cisterna">
+              <PropertyRef Name="est_codigo" />
+              <PropertyRef Name="cst_codigo" />
+            </Principal>
+            <Dependent Role="tbl_abastece">
+              <PropertyRef Name="est_codigo" />
+              <PropertyRef Name="cst_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_asign__emp_c__1EA48E88">
+          <End Type="db_gasolineraModel1.tbl_empleado" Role="tbl_empleado" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_asignado" Role="tbl_asignado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_asignado">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_asign__est_c__1F98B2C1">
+          <End Type="db_gasolineraModel1.tbl_estacion" Role="tbl_estacion" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_asignado" Role="tbl_asignado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_asignado">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_bitac__bi_id__6166761E">
+          <End Type="db_gasolineraModel1.tbl_bitacora" Role="tbl_bitacora" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_bitacora_deta" Role="tbl_bitacora_deta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bitacora">
+              <PropertyRef Name="bi_id" />
+            </Principal>
+            <Dependent Role="tbl_bitacora_deta">
+              <PropertyRef Name="bi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_bomba__est_c__5AEE82B9">
+          <End Type="db_gasolineraModel1.tbl_estacion" Role="tbl_estacion" Multiplicity="0..1" />
+          <End Type="db_gasolineraModel1.tbl_bomba" Role="tbl_bomba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_bomba">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_reali__bmb_c__0A9D95DB">
+          <End Type="db_gasolineraModel1.tbl_bomba" Role="tbl_bomba" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_realiza" Role="tbl_realiza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bomba">
+              <PropertyRef Name="bmb_codigo" />
+            </Principal>
+            <Dependent Role="tbl_realiza">
+              <PropertyRef Name="bmb_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_venta__bmb_c__7D439ABD">
+          <End Type="db_gasolineraModel1.tbl_bomba" Role="tbl_bomba" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_venta" Role="tbl_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_bomba">
+              <PropertyRef Name="bmb_codigo" />
+            </Principal>
+            <Dependent Role="tbl_venta">
+              <PropertyRef Name="bmb_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_ciste__est_c__5FB337D6">
+          <End Type="db_gasolineraModel1.tbl_estacion" Role="tbl_estacion" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_cisterna" Role="tbl_cisterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_cisterna">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_empma__emp_c__19DFD96B">
+          <End Type="db_gasolineraModel1.tbl_empleado" Role="tbl_empleado" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_empmail" Role="tbl_empmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_empmail">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_empte__emp_c__151B244E">
+          <End Type="db_gasolineraModel1.tbl_empleado" Role="tbl_empleado" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_emptel" Role="tbl_emptel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_empleado">
+              <PropertyRef Name="emp_codigo" />
+            </Principal>
+            <Dependent Role="tbl_emptel">
+              <PropertyRef Name="emp_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_telEs__est_c__245D67DE">
+          <End Type="db_gasolineraModel1.tbl_estacion" Role="tbl_estacion" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_telEst" Role="tbl_telEst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estacion">
+              <PropertyRef Name="est_codigo" />
+            </Principal>
+            <Dependent Role="tbl_telEst">
+              <PropertyRef Name="est_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_realiza__0B91BA14">
+          <End Type="db_gasolineraModel1.tbl_venta" Role="tbl_venta" Multiplicity="1" />
+          <End Type="db_gasolineraModel1.tbl_realiza" Role="tbl_realiza" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_venta">
+              <PropertyRef Name="bmb_codigo" />
+              <PropertyRef Name="vnt_FechVent" />
+            </Principal>
+            <Dependent Role="tbl_realiza">
+              <PropertyRef Name="bmb_codigo" />
+              <PropertyRef Name="vnt_FechVent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_gasolineraModel1StoreContainer" CdmEntityContainer="db_gasolineraEntities1">
+          <EntitySetMapping Name="tbl_proveedor">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_proveedor">
+              <MappingFragment StoreEntitySet="tbl_proveedor">
+                <ScalarProperty Name="prv_codigo" ColumnName="prv_codigo" />
+                <ScalarProperty Name="prv_nombre" ColumnName="prv_nombre" />
+                <ScalarProperty Name="prv_CentralA" ColumnName="prv_CentralA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_abastece">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_abastece">
+              <MappingFragment StoreEntitySet="tbl_abastece">
+                <ScalarProperty Name="ab_montoABS" ColumnName="ab_montoABS" />
+                <ScalarProperty Name="ab_cantidadABS" ColumnName="ab_cantidadABS" />
+                <ScalarProperty Name="ab_fecha" ColumnName="ab_fecha" />
+                <ScalarProperty Name="prv_codigo" ColumnName="prv_codigo" />
+                <ScalarProperty Name="cst_codigo" ColumnName="cst_codigo" />
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_asignado">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_asignado">
+              <MappingFragment StoreEntitySet="tbl_asignado">
+                <ScalarProperty Name="asg_fechaAsig" ColumnName="asg_fechaAsig" />
+                <ScalarProperty Name="asg_jornada" ColumnName="asg_jornada" />
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+                <ScalarProperty Name="emp_codigo" ColumnName="emp_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_bitacora">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_bitacora">
+              <MappingFragment StoreEntitySet="tbl_bitacora">
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="objeto" ColumnName="objeto" />
+                <ScalarProperty Name="nombrePC" ColumnName="nombrePC" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="bi_id" ColumnName="bi_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_bitacora_deta">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_bitacora_deta">
+              <MappingFragment StoreEntitySet="tbl_bitacora_deta">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="campo" ColumnName="campo" />
+                <ScalarProperty Name="bi_num" ColumnName="bi_num" />
+                <ScalarProperty Name="bi_id" ColumnName="bi_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_bomba">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_bomba">
+              <MappingFragment StoreEntitySet="tbl_bomba">
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+                <ScalarProperty Name="bmb_estado" ColumnName="bmb_estado" />
+                <ScalarProperty Name="bmb_tipo" ColumnName="bmb_tipo" />
+                <ScalarProperty Name="bmb_codigo" ColumnName="bmb_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cisterna">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_cisterna">
+              <MappingFragment StoreEntitySet="tbl_cisterna">
+                <ScalarProperty Name="cst_codigo" ColumnName="cst_codigo" />
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+                <ScalarProperty Name="cst_CapActual" ColumnName="cst_CapActual" />
+                <ScalarProperty Name="cst_UltimaFech" ColumnName="cst_UltimaFech" />
+                <ScalarProperty Name="cst_tipo" ColumnName="cst_tipo" />
+                <ScalarProperty Name="cst_altura" ColumnName="cst_altura" />
+                <ScalarProperty Name="cst_diametro" ColumnName="cst_diametro" />
+                <ScalarProperty Name="cst_capacidad" ColumnName="cst_capacidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_empleado">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_empleado">
+              <MappingFragment StoreEntitySet="tbl_empleado">
+                <ScalarProperty Name="emp_genero" ColumnName="emp_genero" />
+                <ScalarProperty Name="emp_direccion" ColumnName="emp_direccion" />
+                <ScalarProperty Name="emp_Tcontrato" ColumnName="emp_Tcontrato" />
+                <ScalarProperty Name="emp_salarioN" ColumnName="emp_salarioN" />
+                <ScalarProperty Name="emp_puesto" ColumnName="emp_puesto" />
+                <ScalarProperty Name="emp_salida" ColumnName="emp_salida" />
+                <ScalarProperty Name="emp_edad" ColumnName="emp_edad" />
+                <ScalarProperty Name="emp_fechNac" ColumnName="emp_fechNac" />
+                <ScalarProperty Name="emp_fechEgre" ColumnName="emp_fechEgre" />
+                <ScalarProperty Name="emp_fecIngre" ColumnName="emp_fecIngre" />
+                <ScalarProperty Name="emp_seguro" ColumnName="emp_seguro" />
+                <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="emp_codigo" ColumnName="emp_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_empmail">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_empmail">
+              <MappingFragment StoreEntitySet="tbl_empmail">
+                <ScalarProperty Name="eem_email" ColumnName="eem_email" />
+                <ScalarProperty Name="emp_codigo" ColumnName="emp_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_emptel">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_emptel">
+              <MappingFragment StoreEntitySet="tbl_emptel">
+                <ScalarProperty Name="emt_telefono" ColumnName="emt_telefono" />
+                <ScalarProperty Name="emp_codigo" ColumnName="emp_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_estacion">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_estacion">
+              <MappingFragment StoreEntitySet="tbl_estacion">
+                <ScalarProperty Name="est_ciudad" ColumnName="est_ciudad" />
+                <ScalarProperty Name="est_dpto" ColumnName="est_dpto" />
+                <ScalarProperty Name="est_direccion" ColumnName="est_direccion" />
+                <ScalarProperty Name="est_InOperacion" ColumnName="est_InOperacion" />
+                <ScalarProperty Name="est_Registro" ColumnName="est_Registro" />
+                <ScalarProperty Name="est_nombre" ColumnName="est_nombre" />
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_login">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_login">
+              <MappingFragment StoreEntitySet="tbl_login">
+                <ScalarProperty Name="lg_contra" ColumnName="lg_contra" />
+                <ScalarProperty Name="lg_usuario" ColumnName="lg_usuario" />
+                <ScalarProperty Name="lg_nombre" ColumnName="lg_nombre" />
+                <ScalarProperty Name="lg_id" ColumnName="lg_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_realiza">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_realiza">
+              <MappingFragment StoreEntitySet="tbl_realiza">
+                <ScalarProperty Name="vnt_FechVent" ColumnName="vnt_FechVent" />
+                <ScalarProperty Name="bmb_codigo" ColumnName="bmb_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_telEst">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_telEst">
+              <MappingFragment StoreEntitySet="tbl_telEst">
+                <ScalarProperty Name="te_telefono" ColumnName="te_telefono" />
+                <ScalarProperty Name="est_codigo" ColumnName="est_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_venta">
+            <EntityTypeMapping TypeName="db_gasolineraModel1.tbl_venta">
+              <MappingFragment StoreEntitySet="tbl_venta">
+                <ScalarProperty Name="vnt_TotVentaLit" ColumnName="vnt_TotVentaLit" />
+                <ScalarProperty Name="vnt_FechVent" ColumnName="vnt_FechVent" />
+                <ScalarProperty Name="vnt_montoV" ColumnName="vnt_montoV" />
+                <ScalarProperty Name="vnt_hora" ColumnName="vnt_hora" />
+                <ScalarProperty Name="bmb_codigo" ColumnName="bmb_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

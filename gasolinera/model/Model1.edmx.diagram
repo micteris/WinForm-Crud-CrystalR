@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64571c5c4e2847b58fa3ff7ad74fd12a" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_proveedor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_abastece" Width="1.5" PointX="8.25" PointY="2.75" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_asignado" Width="1.5" PointX="9" PointY="7.375" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_bitacora" Width="1.5" PointX="10.75" PointY="1" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_bitacora_deta" Width="1.5" PointX="13" PointY="1.125" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_bomba" Width="1.5" PointX="6" PointY="13.25" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_cisterna" Width="1.5" PointX="6" PointY="4.25" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_empleado" Width="1.5" PointX="6.75" PointY="19.25" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_empmail" Width="1.5" PointX="9" PointY="19.5" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_emptel" Width="1.5" PointX="9" PointY="21.875" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_estacion" Width="1.5" PointX="3.75" PointY="6.875" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_login" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_realiza" Width="1.5" PointX="10.5" PointY="14.75" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_telEst" Width="1.5" PointX="6" PointY="10.875" />
+        <EntityTypeShape EntityType="db_gasolineraModel1.tbl_venta" Width="1.5" PointX="8.25" PointY="15.75" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_abast__prv_c__367C1819" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_abastece__3587F3E0" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_asign__emp_c__1EA48E88" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_asign__est_c__1F98B2C1" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_bitac__bi_id__6166761E" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_bomba__est_c__5AEE82B9" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_reali__bmb_c__0A9D95DB" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_venta__bmb_c__7D439ABD" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_ciste__est_c__5FB337D6" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_empma__emp_c__19DFD96B" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_empte__emp_c__151B244E" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_telEs__est_c__245D67DE" />
+        <AssociationConnector Association="db_gasolineraModel1.FK__tbl_realiza__0B91BA14" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
