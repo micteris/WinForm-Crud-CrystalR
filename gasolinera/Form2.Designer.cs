@@ -72,7 +72,7 @@
             this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(32)))), ((int)(((byte)(30)))));
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.ForeColor = System.Drawing.Color.Silver;
-            this.btnEliminar.Location = new System.Drawing.Point(223, 31);
+            this.btnEliminar.Location = new System.Drawing.Point(223, 39);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(82, 37);
             this.btnEliminar.TabIndex = 3;
@@ -85,7 +85,7 @@
             this.txtEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(32)))), ((int)(((byte)(30)))));
             this.txtEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtEditar.ForeColor = System.Drawing.Color.Silver;
-            this.txtEditar.Location = new System.Drawing.Point(116, 31);
+            this.txtEditar.Location = new System.Drawing.Point(116, 39);
             this.txtEditar.Name = "txtEditar";
             this.txtEditar.Size = new System.Drawing.Size(82, 37);
             this.txtEditar.TabIndex = 2;
@@ -98,7 +98,7 @@
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(32)))), ((int)(((byte)(30)))));
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.ForeColor = System.Drawing.Color.Silver;
-            this.btnNuevo.Location = new System.Drawing.Point(14, 31);
+            this.btnNuevo.Location = new System.Drawing.Point(14, 39);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(82, 37);
             this.btnNuevo.TabIndex = 1;
